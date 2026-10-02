@@ -77,15 +77,7 @@ export const PROJECTS = [
     stack: ['Python', 'FastAPI', 'XGBoost', 'SHAP', 'React', 'Groq API'],
     url: 'https://github.com/sarangp17/FootballIQ-Predictive-Analytics-Platform',
   },
-  {
-    id: 'etl', name: 'Football ETL', icon: '🗄️', category: 'data', tag: 'Data engineering',
-    summary: 'Local Airflow pipeline from a public sports-stats API to a Power BI report.',
-    points: [
-      'Airflow (in Docker) orchestrates extract, Pandas transform, and load into a relational database.',
-      'Power BI report on top of the loaded data.',
-    ],
-    stack: ['Airflow', 'Docker', 'Pandas', 'SQL', 'Power BI'],
-  },
+ 
   {
     id: 'autocall', name: 'AutoCall', icon: '📞', category: 'web', tag: 'SaaS platform',
     summary: 'Two-sided AI call-automation platform, built in about two weeks.',
