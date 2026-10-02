@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-pixel: "Press Start 2P", ui-monospace, monospace;
+  --font-body: "VT323", "MS Sans Serif", "Microsoft Sans Serif", ui-monospace, monospace;
+  --color-win-gray: #c0c0c0;
+  --color-win-light: #dfdfdf;
+  --color-win-dark: #808080;
+  --color-win-black: #0a0a0a;
+  --color-win-navy: #000080;
+  --color-win-teal: #008080;
+  --color-link: #0000ee;
+  --color-visited: #551a8b;
+}
+
+/* ---------- Windows 95/98 bevels ---------- */
+@utility bevel-out {
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+}
+@utility bevel-in {
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+}
+@utility bevel-flat {
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #808080;
+}
+@utility bevel-group {
+  border: 1px solid #808080;
+  box-shadow: 1px 1px 0 #ffffff, inset 1px 1px 0 #ffffff;
+}
+
+html, body, #root { height: 100%; margin: 0; }
+body { background: #e8e2d4; overflow: hidden; }
+
+.retro-screen {
+  font-family: var(--font-body);
+  image-rendering: pixelated;
+  border-radius: 26px;
+  background: #000;
+  color: #000;
+}
+.retro-screen *, .retro-screen *::before, .retro-screen *::after { box-sizing: border-box; }
+.retro-screen a { color: var(--color-link); text-decoration: underline; cursor: pointer; }
+.retro-screen a:visited { color: var(--color-visited); }
+.retro-screen button { font-family: var(--font-body); cursor: pointer; }
+.retro-screen input, .retro-screen textarea { font-family: var(--font-body); }
+
+/* Classic chunky scrollbars */
+.win-scroll { overflow: auto; overscroll-behavior: contain; }
+.win-scroll::-webkit-scrollbar { width: 16px; height: 16px; }
+.win-scroll::-webkit-scrollbar-track {
+  background: repeating-conic-gradient(#c0c0c0 0% 25%, #ffffff 0% 50%) 50% / 2px 2px;
+}
+.win-scroll::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+}
+
+/* CRT touches */
+@keyframes crt-flicker { 0%, 100% { opacity: 0.97; } 50% { opacity: 1; } 92% { opacity: 0.92; } }
+.crt-flicker { animation: crt-flicker 0.18s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.blink { animation: blink 1s steps(1) infinite; }
+@keyframes marquee { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+.marquee-run { display: inline-block; white-space: nowrap; animation: marquee 14s linear infinite; }
+@keyframes pulse-start { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.pulse-start { animation: pulse-start 1.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-flicker, .marquee-run, .pulse-start, .blink { animation: none !important; }
+}
